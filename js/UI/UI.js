@@ -11,7 +11,7 @@ export function paintPokemonsOptions(pokemons) {
   });
 }
 
-/* Function for paint the pokemon name an image on html */
+/* Function for paint the pokemon name and image on html */
 export function paintPokemon(imgSrc, name) {
   document.getElementById('pokemonName').textContent = name;
   document.getElementById('imgPokemon').src = imgSrc;
