@@ -32,5 +32,5 @@ export async function getPokemon(e) {
   const { sprites, abilities, types } = result;
   //console.log(result);
   /* Paint pokemon name and image on html */
-  paintPokemon(sprites.other.home.front_default, name);
+  paintPokemon(sprites.other.home.front_default, name, e);
 }
