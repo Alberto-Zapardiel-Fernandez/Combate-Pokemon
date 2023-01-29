@@ -15,30 +15,54 @@
 
   <main class="inicio d-grid">
     <!-- Start section -->
-    <section class="empezar col-lg-1 col-md-4 col-sm-12 mx-auto" id="empezar">
-      <a href="#" id="btnStart" class="btn btn-outline-light btn-lg ">
+    <section class="empezar col-lg-2 col-md-4 col-sm-12 mx-auto" id="empezar">
+      <a id="btnStart" class="btn btn-outline-light btn-lg ">
         <img src="./assets/pokeball.svg" width="25px" class="img-pokeball">Empezar</a>
+
+      <!-- Alert -->
+      <div class="opacity0 p-3 w-100 alert alert-danger d-flex align-items-center h-25 pt-3" id="divAlert" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2  h-100"
+          viewBox="0 0 16 16" role="img" aria-label="Warning:">
+          <path
+            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </svg>
+        <div id="alertMessage">
+
+        </div>
+      </div>
     </section>
 
     <!-- Selection section -->
     <!-- First Select -->
-    <section class="seleccion col-12 mx-auto d-flex justify-content-evenly align-items-center" id="seleccion">
-      <div class="">
-        <select name="pokemon" class="selectPokemons form-select" id="selectPokemons">
+    <section class="seleccion col-12 mx-auto d-flex justify-content-evenly" id="seleccion">
+      <div>
+        <select name="pokemon" class="selectPokemons form-select" id="select1">
           <option value="Selecciona un pokemon" selected disabled>Selecciona un pokemon</option>
         </select>
-        <h3 id="pokemonName" class="text-center text-white m-2"></h3>
-        <img id="imgPokemon" height="200px">
+        <h3 id="pokemonName1" class="text-center text-white m-2"></h3>
+        <img id="imgPokemon1" height="200px">
       </div>
 
       <!-- Second select -->
-
+      <div>
+        <select name="pokemon" class="selectPokemons form-select" id="select2">
+          <option value="Selecciona un pokemon" selected disabled>Selecciona un pokemon</option>
+        </select>
+        <h3 id="pokemonName2" class="text-center text-white m-2"></h3>
+        <img id="imgPokemon2" height="200px">
+      </div>
       <!-- Third Select -->
-
+      <div>
+        <select name="pokemon" class="selectPokemons form-select" id="select3">
+          <option value="Selecciona un pokemon" selected disabled>Selecciona un pokemon</option>
+        </select>
+        <h3 id="pokemonName3" class="text-center text-white m-2"></h3>
+        <img id="imgPokemon3" height="200px">
+      </div>
     </section>
 
     <!-- Combat section -->
-    <section class="combate"></section>
+    <section class="combate d-none"></section>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
