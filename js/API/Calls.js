@@ -30,7 +30,6 @@ export async function getPokemon(e) {
   const result = await response.json();
   /* Save which parameters i need */
   const { sprites, abilities, types } = result;
-  //console.log(result);
   /* Paint pokemon name and image on html */
-  paintPokemon(sprites.other.home.front_default, name, e);
+  paintPokemon(sprites.other.home.front_default, name, abilities, types, e);
 }
