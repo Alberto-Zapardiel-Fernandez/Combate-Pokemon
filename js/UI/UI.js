@@ -1,4 +1,5 @@
 import { getPokemon } from '../API/Calls.js';
+import { capitalizeFirstLetter } from '../Functions/functions.js';
 const selectPokemons = document.getElementsByClassName('selectPokemons');
 
 /* For Each pokemon write an option into select */
@@ -8,17 +9,23 @@ export function paintPokemonsOptions(pokemons) {
     for (let i = 0; i < selectPokemons.length; i++) {
       selectPokemons[
         i
-      ].innerHTML += `<option id="${pokemon.id}" value="${pokemon.name}">${pokemon.name}</option>`;
+      ].innerHTML += `<option id="${pokemon.id}" value="${pokemon.name}">${pokemon.id} - ${pokemon.name}</option>`;
       selectPokemons[i].addEventListener('change', getPokemon);
     }
   });
 }
 
-/* Function for paint the pokemon name and image on html */
-export function paintPokemon(imgSrc, name, e) {
+/* Function for paint the pokemon name,types and image on html */
+export function paintPokemon(imgSrc, name, abilities, types, e) {
   const id = e.target.id.slice(e.target.id.length - 1);
-  document.getElementById(`pokemonName${id}`).textContent = name;
+  document.getElementById(`pokemonName${id}`).textContent =
+    capitalizeFirstLetter(name);
   document.getElementById(`imgPokemon${id}`).src = imgSrc;
+  const typeParagraph = document.getElementById(`typeParagraph${id}`);
+  typeParagraph.textContent = 'Tipo: ';
+  paintTypes(types, typeParagraph);
+  const abilitiesList = document.getElementById(`abilitiesList${id}`);
+  paintAbilities(abilitiesList, abilities);
 }
 
 /* Function to show the alert */
@@ -39,4 +46,34 @@ export function showAlert(message) {
 }
 
 /* Function to start a new Game */
-export function startGame(pokemons) {}
+//TODO send id and get object by this id
+export function startGame(pokemons) {
+  document.getElementById('empezar').classList.add('d-none');
+  document.getElementById('seleccion').classList.add('d-none');
+  document.getElementById('combate').classList.remove('d-none');
+}
+
+/* Functions */
+
+function paintTypes(types, typeParagraph) {
+  if (types.length > 1) {
+    types.forEach((type, i) => {
+      i < types.length - 1
+        ? (typeParagraph.textContent +=
+            capitalizeFirstLetter(type.type.name) + '/')
+        : (typeParagraph.textContent += capitalizeFirstLetter(type.type.name));
+    });
+  } else {
+    typeParagraph.textContent += capitalizeFirstLetter(types[0].type.name);
+  }
+}
+
+function paintAbilities(abilitiesList, abilities) {
+  abilitiesList.textContent = 'Habilidades';
+  abilities.forEach((ability) => {
+    const li = document.createElement('li');
+    li.textContent = capitalizeFirstLetter(ability.ability.name);
+    li.className = 'text-white ';
+    abilitiesList.appendChild(li);
+  });
+}
