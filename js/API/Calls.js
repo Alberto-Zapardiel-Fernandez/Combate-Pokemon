@@ -1,10 +1,13 @@
 import { paintPokemonsOptions, paintPokemon } from '../UI/UI.js';
+import { calculateCombatResult } from '../Functions/functions.js';
 
 /* URL for a single pokemon data */
 const URL_POKEMON = 'https://pokeapi.co/api/v2/pokemon/';
 
 /* Array for save all pokemons */
-const pokemons = [];
+export const pokemons = [],
+  pokemonsCombatSelected = [],
+  pokemonsCombatRandom = [];
 
 /* Function to fetch all pokemons */
 export async function getPokemons(url) {
@@ -32,4 +35,30 @@ export async function getPokemon(e) {
   const { sprites, abilities, types } = result;
   /* Paint pokemon name and image on html */
   paintPokemon(sprites.other.home.front_default, name, abilities, types, e);
+}
+
+export async function getPokemonCombat(identifier) {
+  const response = await fetch(URL_POKEMON + identifier);
+  const result = await response.json();
+  console.log(result);
+  const { id, name, base_experience, types } = result;
+  let pObj = {
+    'id': id + 1,
+    'name': name,
+    'base_experience': base_experience,
+    'types': types,
+  };
+  /* Push the pokemon object into the array */
+  /* Comprobar si es texto o número */
+  Number(identifier)
+    ? pokemonsCombatRandom.push(pObj)
+    : pokemonsCombatSelected.push(pObj);
+  if (
+    pokemonsCombatSelected.length === 3 &&
+    pokemonsCombatRandom.length === 3
+  ) {
+    //calculateCombatResult(pokemonsCombatSelected,pokemonsCombatRandom)
+    console.log(pokemonsCombatSelected);
+    console.log(pokemonsCombatRandom);
+  }
 }
