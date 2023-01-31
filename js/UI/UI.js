@@ -1,4 +1,9 @@
-import { getPokemon } from '../API/Calls.js';
+import {
+  getPokemon,
+  getPokemonCombat,
+  pokemonsCombatSelected,
+  pokemonsCombatRandom,
+} from '../API/Calls.js';
 import { capitalizeFirstLetter } from '../Functions/functions.js';
 const selectPokemons = document.getElementsByClassName('selectPokemons');
 
@@ -46,14 +51,19 @@ export function showAlert(message) {
 }
 
 /* Function to start a new Game */
-//TODO send id and get object by this id
-export function startGame(pokemons) {
+export function startGame(pokemonsSelected, pokemonsRandom) {
+  showCombatUI();
+  pokemonsSelected.forEach((pokemon) => getPokemonCombat(pokemon));
+  pokemonsRandom.forEach((pokemon) => getPokemonCombat(pokemon));
+}
+
+/* Functions */
+
+function showCombatUI() {
   document.getElementById('empezar').classList.add('d-none');
   document.getElementById('seleccion').classList.add('d-none');
   document.getElementById('combate').classList.remove('d-none');
 }
-
-/* Functions */
 
 function paintTypes(types, typeParagraph) {
   if (types.length > 1) {
