@@ -4,6 +4,7 @@ import { LIMIT } from '../app.js';
 const TOTAL_OPTIONS = 3;
 /* Function to validate all pokemons are selected and start game */
 export function goToCombat() {
+  //TODO comprobar que no estén repetidos los pokemons seelccionados
   const imagenes = document.querySelectorAll('.seleccion img');
   let flag = 0;
   imagenes.forEach((e) => {
@@ -21,8 +22,10 @@ export function goToCombat() {
 }
 
 export function calculateCombatResult(pokemonsCombatSelected, pokemonsCombatRandom) {
-  const pCS = pokemonsCombatSelected.map((name) => capitalizeFirstLetter(name.name));
-  const pCR = pokemonsCombatRandom.map((name) => capitalizeFirstLetter(name.name));
+  let images = pokemonsCombatSelected.map((pokemonImage) => pokemonImage.sprite);
+  pokemonsCombatRandom.forEach((pokemonImage) => images.push(pokemonImage.sprite));
+  const namesPCS = pokemonsCombatSelected.map((name) => capitalizeFirstLetter(name.name));
+  const namesPCR = pokemonsCombatRandom.map((name) => capitalizeFirstLetter(name.name));
   let winMessages = [];
   do {
     let winner = getWinner();
@@ -56,10 +59,10 @@ export function calculateCombatResult(pokemonsCombatSelected, pokemonsCombatRand
     }
   } while (pokemonsCombatSelected.length > 0 && pokemonsCombatRandom.length > 0);
   pokemonsCombatRandom.length > 0
-    ? winMessages.push(`El equipo rival formado por ${pCR[0]}, ${pCR[1]} y ${pCR[2]} ha GANADO!`)
-    : winMessages.push(`Tu equipo formado por ${pCS[0]}, ${pCS[1]} y ${pCS[2]} ha GANADO!`);
+    ? winMessages.push(`El equipo rival formado por ${namesPCR[0]}, ${namesPCR[1]} y ${namesPCR[2]} ha GANADO!`)
+    : winMessages.push(`Tu equipo formado por ${namesPCS[0]}, ${namesPCS[1]} y ${namesPCS[2]} ha GANADO!`);
 
-  paintCombatResult(winMessages);
+  paintCombatResult(winMessages, images, namesPCS, namesPCR);
 }
 
 export function capitalizeFirstLetter(string) {
@@ -87,4 +90,10 @@ function getRandomPokemons() {
     /* Hasta que el array tenga las 3 posiciones y esté completo */
   } while (randomPokemons.length !== TOTAL_OPTIONS);
   return randomPokemons;
+}
+
+export function playMusic() {
+  const audio = document.createElement('audio');
+  audio.src = '../assets/pokemon.mp3';
+  audio.play();
 }
