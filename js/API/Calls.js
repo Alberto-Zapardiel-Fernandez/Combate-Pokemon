@@ -40,11 +40,12 @@ export async function getPokemon(e) {
 export async function getPokemonCombat(identifier) {
   const response = await fetch(URL_POKEMON + identifier);
   const result = await response.json();
-  const { id, name, weight } = result;
+  const { id, name, weight, sprites } = result;
   let pObj = {
     'id': id + 1,
     name,
     weight,
+    'sprite': sprites.front_default,
   };
   /* Push the pokemon object into the array */
   /* Comprobar si es texto o número */
