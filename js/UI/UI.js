@@ -1,5 +1,5 @@
 import { getPokemon, getPokemonCombat } from '../API/Calls.js';
-import { capitalizeFirstLetter } from '../Functions/functions.js';
+import { capitalizeFirstLetter, playMusic } from '../Functions/functions.js';
 const selectPokemons = document.getElementsByClassName('selectPokemons');
 
 /* For Each pokemon write an option into select */
@@ -49,8 +49,12 @@ export function startGame(pokemonsSelected, pokemonsRandom) {
   pokemonsRandom.forEach((pokemon) => getPokemonCombat(pokemon));
 }
 
-export function paintCombatResult(messages) {
-  console.log(messages);
+export function paintCombatResult(messages, images, namesPCS, namesPCR) {
+  playMusic();
+  const principal = document.querySelector('h1');
+  messages.forEach((message) => {
+    principal.textContent += message;
+  });
 }
 /* Functions */
 
