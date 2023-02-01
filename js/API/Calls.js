@@ -40,25 +40,16 @@ export async function getPokemon(e) {
 export async function getPokemonCombat(identifier) {
   const response = await fetch(URL_POKEMON + identifier);
   const result = await response.json();
-  console.log(result);
-  const { id, name, base_experience, types } = result;
+  const { id, name, weight } = result;
   let pObj = {
     'id': id + 1,
-    'name': name,
-    'base_experience': base_experience,
-    'types': types,
+    name,
+    weight,
   };
   /* Push the pokemon object into the array */
   /* Comprobar si es texto o número */
-  Number(identifier)
-    ? pokemonsCombatRandom.push(pObj)
-    : pokemonsCombatSelected.push(pObj);
-  if (
-    pokemonsCombatSelected.length === 3 &&
-    pokemonsCombatRandom.length === 3
-  ) {
-    //calculateCombatResult(pokemonsCombatSelected,pokemonsCombatRandom)
-    console.log(pokemonsCombatSelected);
-    console.log(pokemonsCombatRandom);
+  Number(identifier) ? pokemonsCombatRandom.push(pObj) : pokemonsCombatSelected.push(pObj);
+  if (pokemonsCombatSelected.length === 3 && pokemonsCombatRandom.length === 3) {
+    calculateCombatResult(pokemonsCombatSelected, pokemonsCombatRandom);
   }
 }
