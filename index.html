@@ -5,6 +5,7 @@
   <meta charset='UTF-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <!-- Icon -->
   <link rel="icon" type="image/x-icon" href="/assets/pokeball.ico">
   <!-- Styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
@@ -16,7 +17,7 @@
 
   <main class="inicio d-grid">
     <!-- Start section -->
-    <section class="empezar col-lg-2 col-md-4 col-sm-12 mx-auto" id="empezar">
+    <section class="empezar  col-lg-2 col-md-4 col-sm-12 mx-auto" id="empezar">
       <a id="btnStart" class="btn btn-outline-light btn-lg ">
         <img src="./assets/pokeball.svg" width="25px" class="img-pokeball">Empezar</a>
 
@@ -35,15 +36,15 @@
 
     <!-- Selection section -->
     <!-- First Select -->
-    <section class="seleccion col-12 mx-auto d-flex justify-content-evenly" id="seleccion">
+    <section class="seleccion  col-12 mx-auto d-flex justify-content-evenly" id="seleccion">
       <div>
         <select name="pokemon" class="selectPokemons form-select" id="select1">
           <option value="Selecciona un pokemon" selected disabled>Selecciona un pokemon</option>
         </select>
-        <h3 id="pokemonName1" class="text-center text-white m-2"></h3>
+        <h3 id="pokemonName1" class="text-center text-warning m-2"></h3>
         <img id="imgPokemon1" height="200px">
-        <p class="text-center text-white pt-4" id="typeParagraph1"></p>
-        <ol class="text-center text-white pt-1" id="abilitiesList1"></ol>
+        <p class="text-center text-warning pt-4" id="typeParagraph1"></p>
+        <ol class="text-center text-warning pt-1" id="abilitiesList1"></ol>
       </div>
 
       <!-- Second select -->
@@ -51,31 +52,59 @@
         <select name="pokemon" class="selectPokemons form-select" id="select2">
           <option value="Selecciona un pokemon" selected disabled>Selecciona un pokemon</option>
         </select>
-        <h3 id="pokemonName2" class="text-center text-white m-2"></h3>
+        <h3 id="pokemonName2" class="text-center text-warning m-2"></h3>
         <img id="imgPokemon2" height="200px">
-        <p class="text-center text-white pt-4" id="typeParagraph2"></p>
-        <ol class="text-center text-white pt-1" id="abilitiesList2"></ol>
+        <p class="text-center text-warning pt-4" id="typeParagraph2"></p>
+        <ol class="text-center text-warning pt-1" id="abilitiesList2"></ol>
       </div>
       <!-- Third Select -->
       <div>
         <select name="pokemon" class="selectPokemons form-select" id="select3">
           <option value="Selecciona un pokemon" selected disabled>Selecciona un pokemon</option>
         </select>
-        <h3 id="pokemonName3" class="text-center text-white m-2"></h3>
+        <h3 id="pokemonName3" class="text-center text-warning m-2"></h3>
         <img id="imgPokemon3" height="200px">
         <div id="pokeDiv3"></div>
-        <p class="text-center text-white pt-4" id="typeParagraph3"></p>
-        <ol class="text-center text-white pt-1" id="abilitiesList3"></ol>
+        <p class="text-center text-warning pt-4" id="typeParagraph3"></p>
+        <ol class="text-center text-warning pt-1" id="abilitiesList3"></ol>
       </div>
     </section>
 
     <!-- Combat section -->
-    <section class="combate d-none" id="combate">
-      <h1>COMBATE</h1>
+    <section class="combate text-warning d-none mx-auto" id="combate">
+      <div class="card card-selected" id="cardSelected">
+        <div class="pokemon-card">
+          <p class="fw-bold fs-4"></p>
+          <img src="./assets/pokeball.ico" width="150px">
+        </div>
+        <div class="pokemon-card">
+          <p class="fw-bold fs-4"></p>
+          <img src="./assets/pokeball.ico" width="150px">
+        </div>
+        <div class="pokemon-card">
+          <p class="fw-bold fs-4"></p>
+          <img src="./assets/pokeball.ico" width="150px">
+        </div>
+      </div>
+      <!-- Div for last messages -->
+      <div class="final-messages" id="finalMessages"></div>
+      <div class="card card-random" id="cardRandom">
+        <div class="pokemon-card">
+          <p class="fw-bold fs-4"></p>
+          <img src="./assets/pokeball.ico" width="150px">
+        </div>
+        <div class="pokemon-card">
+          <p class="fw-bold fs-4"></p>
+          <img src="./assets/pokeball.ico" width="150px">
+        </div>
+        <div class="pokemon-card">
+          <p class="fw-bold fs-4"></p>
+          <img src="./assets/pokeball.ico" width="150px">
+        </div>
+      </div>
     </section>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/app.js" type="module"></script>
 </body>
 
