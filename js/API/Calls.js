@@ -37,6 +37,7 @@ export async function getPokemon(e) {
   paintPokemon(sprites.other.home.front_default, name, abilities, types, e);
 }
 
+/* Function to fetach a single pokemon for combat result */
 export async function getPokemonCombat(identifier) {
   const response = await fetch(URL_POKEMON + identifier);
   const result = await response.json();
